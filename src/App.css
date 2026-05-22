@@ -1,61 +1,97 @@
+
 .app {
   min-height: 100vh;
-  padding: 30px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #6e84e3, #934bdc);
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #4072e0, #10cbe4);
-  color: rgb(8, 8, 8);
-}
-h1 {
-  color: #060606;
-  font-weight: bold;
-}
-.info p {
-  color: #3d3b3b;
 }
 
-.title {
-  margin-bottom: 40px;
-  font-size: 28px;
-}
-.loader {
-  margin: 50px auto;
-  width: 50px;
-  height: 50px;
-  border: 5px solid #fff;
-  border-top: 5px solid transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
 
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 25px;
-  max-width: 1000px;
-  margin: auto;
-}
 .card {
-  padding: 25px;
+  width: 320px;
+  padding: 20px;
   border-radius: 20px;
-
   background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-
+  backdrop-filter: blur(15px);
   box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-  transition: 0.4s;
-  position: relative;
-}
-.card:hover {
-  transform: translateY(-12px) scale(1.05);
+  color: white;
+  text-align: center;
 }
 
-.info p {
-  margin: 6px 0;
-  font-size: 14px;
+
+.image-box {
+  width: 120px;
+  height: 120px;
+  margin: 15px auto;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.like-section {
+  margin: 10px 0;
+}
+
+.heart {
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.liked {
+  color: red;
+  transform: scale(1.2);
+}
+
+
+.comment-section {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.comment-section input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.comment-section button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #ff7e5f;
+  color: white;
+  cursor: pointer;
+}
+
+.comment-section button:hover {
+  background: #feb47b;
+}
+
+
+.comments {
+  margin-top: 10px;
+  text-align: left;
+}
+
+.comments p {
+  font-size: 13px;
+  margin: 4px 0;
 }

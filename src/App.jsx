@@ -1,40 +1,99 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useState } from "react";
 import "./App.css";
 
 export default function App() {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data);
-        setLoading(false);
-      });
-  }, []);
+  // Image upload
+  const fileInputRef = useRef();
+  const [image, setImage] = useState(null);
+
+  // Like feature
+  const [likes, setLikes] = useState(0);
+  const [liked, setLiked] = useState(false);
+
+  // Comment feature
+  const [commentInput, setCommentInput] = useState("");
+  const [comments, setComments] = useState([]);
+
+  // Handle Image Upload
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(URL.createObjectURL(file));
+    }
+  };
+
+  // Like Toggle
+  const handleLike = () => {
+    setLiked(!liked);
+    setLikes(liked ? likes - 1 : likes + 1);
+  };
+
+  // Add Comment
+  const addComment = () => {
+    if (commentInput.trim() !== "") {
+      setComments([...comments, commentInput]);
+      setCommentInput("");
+    }
+  };
 
   return (
     <div className="app">
-      <h1 className="title"> User Directory</h1>
 
-      {loading ? (
-        <div className="loader"></div>
-      ) : (
-        <div className="card-container">
-          {users.map((user) => (
-            <div className="card" key={user.id}>    
-             <h3>{user.name}</h3>
-              <div className="info">
-                <p>Email: {user.email}</p>
-                <p>Phone: {user.phone}</p>
-                <p>Website: {user.website}</p>
-              </div>
+      <div className="card">
 
-            </div>
+        <h2>Profile</h2>
+
+      
+        <div
+          className="image-box"
+          onClick={() => fileInputRef.current.click()}
+        >
+          {image ? (
+            <img src={image} alt="profile" />
+          ) : (
+            <p>Click to Upload</p>
+          )}
+        </div>
+
+        <input
+          type="file"
+          ref={fileInputRef}
+          onChange={handleImageUpload}
+          hidden
+        />
+
+   
+        <div className="like-section">
+          <span
+            className={liked ? "heart liked" : "heart"}
+            onClick={handleLike}
+          >
+            ❤️
+          </span>
+          <p>{likes} Likes</p>
+        </div>
+
+    
+        <div className="comment-section">
+          <input
+            type="text"
+            placeholder="Add a comment..."
+            value={commentInput}
+            onChange={(e) => setCommentInput(e.target.value)}
+          />
+          <button onClick={addComment}>Post</button>
+        </div>
+
+        
+        <div className="comments">
+          {comments.map((c, index) => (
+            <p key={index}>💬 {c}</p>
           ))}
         </div>
-      )}
+
+      </div>
+
     </div>
   );
 }
