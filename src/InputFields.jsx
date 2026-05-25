@@ -27,6 +27,10 @@ export default function InputFields() {
         value={formData.city}
         onChange={handleChange}
       />
+
+      <button className="submit-btn">
+        Submit
+      </button>
     </>
   );
 }

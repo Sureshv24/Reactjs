@@ -36,7 +36,7 @@
 
 
 .dark {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background: linear-gradient(135deg, #0f2027, #287d9a, #416d80);
   color: white;
 }
 
@@ -70,6 +70,26 @@ button:hover {
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  background: linear-gradient(45deg, #4f46e5, #7c3aed);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  transform: scale(1.03);
+  opacity: 0.9;
+}
+
+.dark .submit-btn {
+  background: linear-gradient(45deg, #2563eb, #7c3aed);
+}
 
 .dark .form {
   background: rgba(255, 255, 255, 0.1);
