@@ -1,44 +1,51 @@
-import React, { createContext, useState } from "react";
-import Form from "./Form";
+import React, { useState } from "react";
 import "./App.css";
-
-
-export const FormContext = createContext();
 
 export default function App() {
 
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    city: ""
-  });
+  const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState([]);
 
 
-  const [dark, setDark] = useState(false);
+  const sendMessage = () => {
+    if (message.trim() === "") return;
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setMessages([...messages, message]); 
+    setMessage(""); 
   };
 
- 
-  const toggleTheme = () => setDark(!dark);
-
   return (
-    <FormContext.Provider value={{ formData, handleChange, dark }}>
-      
-      <div className={dark ? "app dark" : "app light"}>
+    <div className="app">
 
-        <h1>Context Form</h1>
+      <h1> Mini Chat App</h1>
 
-        <button onClick={toggleTheme}>
-          {dark ? "🌞 Light Mode" : "🌙 Dark Mode"}
-        </button>
+      <div className="chat-container">
 
-        <Form />
+       
+        <div className="chat-box">
+          {messages.map((msg, index) => (
+            <div className="message" key={index}>
+              {msg}
+            </div>
+          ))}
+        </div>
+
+        <div className="input-area">
+          <input
+            type="text"
+            placeholder="Type a message..."
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+
+          <button onClick={sendMessage}>
+            Send Message
+          </button>
+        </div>
 
       </div>
 
-    </FormContext.Provider>
+    </div>
   );
 }
