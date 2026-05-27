@@ -1,51 +1,60 @@
-import React, { useState } from "react";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Profile from "./pages/Profile";
+import Services from "./pages/Services";
+
+import WebDevelopment from "./pages/WebDevelopment";
+import AppDevelopment from "./pages/AppDevelopment";
+import UIUX from "./pages/UIUX";
+
 import "./App.css";
 
 export default function App() {
-
-
-  const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
-
-
-  const sendMessage = () => {
-    if (message.trim() === "") return;
-
-    setMessages([...messages, message]); 
-    setMessage(""); 
-  };
-
   return (
-    <div className="app">
+    <BrowserRouter>
 
-      <h1> Mini Chat App</h1>
+      {/* Navbar */}
+      <nav className="navbar">
 
-      <div className="chat-container">
+        <NavLink to="/">Home</NavLink>
 
-       
-        <div className="chat-box">
-          {messages.map((msg, index) => (
-            <div className="message" key={index}>
-              {msg}
-            </div>
-          ))}
-        </div>
+        <NavLink to="/about">About</NavLink>
 
-        <div className="input-area">
-          <input
-            type="text"
-            placeholder="Type a message..."
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
+        <NavLink to="/services">Services</NavLink>
 
-          <button onClick={sendMessage}>
-            Send Message
-          </button>
-        </div>
+        <NavLink to="/contact">Contact</NavLink>
 
-      </div>
+        <NavLink to="/profile">Profile</NavLink>
 
-    </div>
+      </nav>
+
+      {/* routes */}
+      <Routes>
+
+        <Route path="/" element={<Home />} />
+
+        <Route path="/about" element={<About />} />
+
+        <Route path="/contact" element={<Contact />} />
+
+        <Route path="/profile" element={<Profile />} />
+
+        {/* Nested Routing */}
+        <Route path="/services" element={<Services />}>
+
+          <Route path="web" element={<WebDevelopment />} />
+
+          <Route path="app" element={<AppDevelopment />} />
+
+          <Route path="uiux" element={<UIUX />} />
+
+        </Route>
+
+      </Routes>
+
+    </BrowserRouter>
   );
 }
