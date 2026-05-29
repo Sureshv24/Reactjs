@@ -5,77 +5,75 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #5166c1, #b944c8);
+  font-family: Arial, sans-serif;
   min-height: 100vh;
-  color: white;
+  background: linear-gradient(135deg, #ea3737, #2436d6);
 }
 
-.navbar {
-  display: flex;
-  justify-content: center;
+.container {
+  padding: 40px;
+  text-align: center;
+}
+
+.container h1 {
+  color: rgb(228, 214, 214);
+  margin-bottom: 30px;
+}
+
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  padding: 20px;
-  background: rgba(110, 98, 98, 0.1);
-  backdrop-filter: blur(15px);
 }
 
-
-.navbar a {
+.user-card {
   text-decoration: none;
-  font-weight: bold;
-  color: rgb(237, 226, 226);
-  padding: 10px 18px;
-  border-radius: 25px;
+  color: rgb(240, 227, 227);
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
   transition: 0.3s;
 }
 
-
-.navbar a.active {
-  background: rgb(244, 238, 238);
-  color: #764ba2;
+.user-card:hover {
+  transform: translateY(-8px);
 }
 
 
-.navbar a:hover {
-  background: rgba(255,255,255,0.2);
+.details-card {
+  max-width: 600px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  color: rgb(246, 234, 234);
+  text-align: left;
 }
 
-.page {
-  text-align: center;
-  margin-top: 50px;
+.details-card p {
+  margin: 12px 0;
+  font-size: 17px;
 }
 
-.sub-nav {
+.back-btn {
+  display: inline-block;
   margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-  .sub-nav a {
   text-decoration: none;
   color: white;
-  padding: 10px 15px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.1);
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: #ff7e5f;
 }
 
-
-.sub-nav a.active {
-  background: white;
-  color: #764ba2;
+.back-btn:hover {
+  background: #ff5722;
 }
 
-
-.service-box {
-  margin-top: 30px;
-  padding: 20px;
-  width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 15px;
-  background: rgba(65, 63, 63, 0.15);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+.loading {
+  color: white;
+  text-align: center;
+  margin-top: 100px;
 }
