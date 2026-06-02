@@ -71,26 +71,12 @@ export default function App() {
       </table>
 
       <div className="pagination">
-        <button
-          onClick={prevPage}
-          disabled={currentPage === 1}
-        >
+        <button onClick={prevPage}disabled={currentPage === 1}>
           Prev
         </button>
-
-        {Array.from(
-          { length: totalPages },
-          (_, i) => i + 1
-        ).map((pageNum) => (
-          <button
-            key={pageNum}
-            onClick={() => goToPage(pageNum)}
-            className={
-              currentPage === pageNum
-                ? "active"
-                : ""
-            }
-          >
+        {Array.from({ length: totalPages },(_, i) => i + 1).map((pageNum) => (
+          <button key={pageNum} onClick={() => goToPage(pageNum)} 
+          className={currentPage === pageNum ? "active" : "" }>
             {pageNum}
           </button>
         ))}
