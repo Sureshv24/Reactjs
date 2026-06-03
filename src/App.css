@@ -7,7 +7,7 @@
 body{
   min-height:100vh;
   font-family:Arial,sans-serif;
-  background:linear-gradient(135deg,#eed0c4,#f1a90c);
+  background:linear-gradient(135deg,#eed0c4,#e4b95d);
 }
 
 .container{
@@ -33,7 +33,7 @@ table{
 }
 
 th{
-  background:#e59d46;
+  background:#969292;
   color:rgb(19, 17, 17);
   padding:15px;
 }
