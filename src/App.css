@@ -74,11 +74,11 @@ button {
 }
 
 td button {
-  background: #eb3915;
+  background: #797776;
 }
 
 td button:hover {
-  background: #e6e228;
+  background: #e9af5e;
 }
 
 @media (max-width: 768px) {
